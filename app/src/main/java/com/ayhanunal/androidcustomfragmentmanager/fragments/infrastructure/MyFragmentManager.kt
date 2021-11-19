@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager
 import com.ayhanunal.androidcustomfragmentmanager.R
 import com.ayhanunal.androidcustomfragmentmanager.fragments.FragmentA
 import com.ayhanunal.androidcustomfragmentmanager.fragments.FragmentB
+import com.ayhanunal.androidcustomfragmentmanager.fragments.HomeFragment
 import java.lang.Exception
 import java.util.*
 
@@ -25,6 +26,7 @@ class MyFragmentManager(private val context: Context, private val fragmentManage
         return when(type) {
             MyFragmentType.MY_FRAGMENT_TYPE_A -> "fragment_a"
             MyFragmentType.MY_FRAGMENT_TYPE_B -> "fragment_b"
+            MyFragmentType.HOME_FRAGMENT -> "fragment_home"
         }
     }
 
@@ -37,6 +39,7 @@ class MyFragmentManager(private val context: Context, private val fragmentManage
         currentFragment = when (fragmentType) {
             MyFragmentType.MY_FRAGMENT_TYPE_A -> FragmentA()
             MyFragmentType.MY_FRAGMENT_TYPE_B -> FragmentB()
+            MyFragmentType.HOME_FRAGMENT -> HomeFragment()
         }
 
         currentFragment?.arguments = arguments
