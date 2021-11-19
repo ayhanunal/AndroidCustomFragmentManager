@@ -45,4 +45,10 @@ class MainActivity : AppCompatActivity(), OnFragmentInteractionListener {
             }
         }
     }
+
+    override fun onBackPressed() {
+        if (myFragmentManager.onBackPressed()){
+            super.onBackPressed()
+        }
+    }
 }
