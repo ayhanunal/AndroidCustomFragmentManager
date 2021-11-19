@@ -1,6 +1,7 @@
 package com.ayhanunal.androidcustomfragmentmanager.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,9 @@ class FragmentB : MyFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val isUserPushed = arguments?.get("isUserPushedScreen")
+        Log.e("TEST", "Fragment B isUserPushed: ${isUserPushed}")
 
     }
 
