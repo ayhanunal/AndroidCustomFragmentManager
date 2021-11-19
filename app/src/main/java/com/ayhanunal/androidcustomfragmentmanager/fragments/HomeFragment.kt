@@ -2,6 +2,7 @@ package com.ayhanunal.androidcustomfragmentmanager.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,9 @@ class HomeFragment : MyFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val isUserPushed = arguments?.get("isUserPushedScreen")
+        Log.e("TEST", "Fragment Home isUserPushed: ${isUserPushed}")
 
         binding.homeFragmentGotoFragmentA.setOnClickListener {
             mListener?.onFragmentInteraction(MyFragmentCommand.GO_TO_FRAGMENT_A, null, true)
