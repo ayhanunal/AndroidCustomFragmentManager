@@ -1,16 +1,22 @@
 package com.ayhanunal.androidcustomfragmentmanager.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ayhanunal.androidcustomfragmentmanager.databinding.FragmentHomeBinding
+import com.ayhanunal.androidcustomfragmentmanager.enumerations.MyFragmentCommand
 import com.ayhanunal.androidcustomfragmentmanager.fragments.infrastructure.MyFragment
 import com.ayhanunal.androidcustomfragmentmanager.fragments.infrastructure.MyFragmentType
+import com.ayhanunal.androidcustomfragmentmanager.listeners.OnFragmentInteractionListener
+import java.lang.RuntimeException
 
 class HomeFragment : MyFragment() {
 
     private lateinit var binding: FragmentHomeBinding
+
+    private var mListener: OnFragmentInteractionListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,7 +30,27 @@ class HomeFragment : MyFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.homeFragmentGotoFragmentA.setOnClickListener {
+            mListener?.onFragmentInteraction(MyFragmentCommand.GO_TO_FRAGMENT_A, null, true)
+        }
 
+        binding.homeFragmentGotoFragmentB.setOnClickListener {
+            mListener?.onFragmentInteraction(MyFragmentCommand.GO_TO_FRAGMENT_B, null, true)
+        }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnFragmentInteractionListener){
+            mListener = context
+        }else{
+            throw RuntimeException("${context} must implement OnFragmentInteractionListener")
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        mListener = null
     }
 
     override val fragmentType: MyFragmentType

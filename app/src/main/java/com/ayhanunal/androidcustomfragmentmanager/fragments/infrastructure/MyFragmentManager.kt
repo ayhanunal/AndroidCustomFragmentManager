@@ -51,12 +51,13 @@ class MyFragmentManager(private val context: Context, private val fragmentManage
         }
 
         val fragmentTransaction = fragmentManager.beginTransaction()
-        if (addToBackStack){
-            fragmentTransaction.add(R.id.activity_main_fragment_container, currentFragment as Fragment)
-                .addToBackStack(fragmentType.toString())
-        }else{
-            fragmentTransaction.replace(R.id.activity_main_fragment_container, currentFragment as Fragment)
-        }
+//        if (addToBackStack){
+//            fragmentTransaction.add(R.id.activity_main_fragment_container, currentFragment as Fragment)
+//                .addToBackStack(fragmentType.toString())
+//        }else{
+//            fragmentTransaction.replace(R.id.activity_main_fragment_container, currentFragment as Fragment)
+//        }
+        fragmentTransaction.replace(R.id.activity_main_fragment_container, currentFragment as Fragment).addToBackStack(fragmentType.name)
 
         try {
             fragmentTransaction.commit()
