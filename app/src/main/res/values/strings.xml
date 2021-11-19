@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidCustomFragmentManager</string>
+    <string name="main_status_bar_text">Main Status Bar</string>
 </resources>
